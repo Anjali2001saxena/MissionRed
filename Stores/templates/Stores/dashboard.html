@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mission Red </title>
+    <link rel="icon" href="{% static 'Home/Images/logo.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'Stores/CSS/dashboard.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+    <div class="header">
+        <a href="{% url 'Stores:logout' %}">Logout</a>
+    </div>
+
+    <h1 class="heading">ORDERS</h1>
+        <div class="main">
+            {% for order in list %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"> {{order.customer}} </div>
+                    <div class="card-text"><strong>Timing: </strong>{{order.timing}}</div>
+                    <div class="card-text"><strong>Address: </strong>{{order.address}}</div>
+                    <div class="card-text"><strong>Order: </strong>{{order.items}}</div>
+
+                    <div class="flex-container">
+                    <button class="button">
+                        <a href="{% url 'Stores:deliver_order' name=user order_id=order.id %}" class="link">Deliver</a>
+                    </button>
+                    <button class="button">
+                        <a href="{% url 'Stores:cancel_order' name=user order_id=order.id %}" class="link">Cancel</a>
+                    </button>
+                    </div>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</body>
+</html>
