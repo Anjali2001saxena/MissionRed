@@ -1,0 +1,92 @@
+html
+{
+  min-width: 100%;
+  min-height: 100%;
+}
+body
+{
+  background-image: linear-gradient(to bottom right, red, black);
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+}
+
+input
+{
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+a
+{
+    margin: 0% 1%;
+    font-weight: 500;
+    color: yellow;
+}
+a:hover
+{
+    color: white;
+    text-decoration: none !important;
+}
+
+.form
+{
+  width: 80%;
+  height: 85vh;
+  margin: 2% auto;
+  padding: 1% 2%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  background-color: white;
+  color: black;
+  border-radius: 2%;
+  box-shadow: 5px 5px 10px black;
+}
+
+.image
+{
+  width: 50%;
+  height:auto;
+  border-right: 2px solid black;
+}
+
+.main
+{
+  width: 50%;
+  margin: auto 2%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  font-size: 15px;
+}
+
+.heading
+{
+  margin: 10% auto;
+  text-align: center;
+  font-size: 30px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.Submit
+{
+  width: 15vh;
+  margin: 10% 40%;
+  border-radius: 12px;
+  background-color: rgb(214, 2, 2); 
+  color: white;
+  border-color: rgb(214, 2, 2);
+}
+
+
+.container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    color: white;
+}
+

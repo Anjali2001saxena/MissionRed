@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mission Red </title>
+    <link rel="icon" href="{% static 'Home/Images/logo.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'users/CSS/order.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-light ">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'users:doctors' user %}">DOCTORS</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'users:stores' user %}">STORES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users:stories' user %}">STORIES</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'users:logout' %}">LOGOUT</a>
+      </li>    
+    </ul>
+    </div>
+
+  </nav>
+
+  <div class="flex-container">
+
+    <img src="{% static 'users/Images/store.png' %}">
+
+    <div class="form">
+        <div class="main">
+          <h1 class="form-heading">
+            Orders
+          </h1>
+          <form method="POST" action="{% url 'users:place_order' name=user store=store %}" >
+            {% csrf_token %}
+              ADDRESS:
+              <input type="text" name="address" placeholder="ADDRESS" required>
+              
+              ITEM LIST: <br>
+              <textarea name="items" placeholder="Place your order...." required></textarea><br>
+              <input type="submit" class=" submit btn" name="submitDetails" value="Order" >
+          </form>
+        </div>
+    </div>
+
+  </div>
+
+  <h1 class="heading">ORDERS</h1>
+
+    {% for order in list %}
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"> {{order.store}} </div>
+          <div class="card-text">Timings: {{order.timing}}</div>
+          <div class="card-text">Order Content: {{order.items}}</div>
+          <div class="card-text">Status: {{order.status}}</div>
+        </div>
+      </div>
+            
+    {% endfor %}
+    
+</body>
+</html>

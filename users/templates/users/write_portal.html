@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mission Red </title>
+    <link rel="icon" href="{% static 'Home/Images/logo.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'users/CSS/write_portal.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-light ">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'users:doctors' user %}">DOCTORS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:stores' user %}">STORES</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'users:stories' user %}">STORIES</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'users:logout' %}">LOGOUT</a>
+          </li>    
+        </ul>
+        </div>
+  
+    </nav>
+
+    <div class="flex-container">
+
+    <img src="{% static 'users/Images/blog.png' %}" class="image">
+
+    <div class="form">
+        <div class="main">
+          <h1 class="heading">
+            Writing Portal
+          </h1>
+          <form method="POST" action="{% url 'users:write_story' user %}" >
+            {% csrf_token %}
+              
+              TITLE: <br>
+              <input type="text" name="title" required><br>
+              STORY: <br>
+              <textarea name="story" placeholder="Share your story...." required></textarea><br>
+              <input type="submit" class=" submit btn" name="submitDetails" value="POST" >
+          </form>
+        </div>
+  
+    </div>
+    </div>
+    
+</body>
+</html>

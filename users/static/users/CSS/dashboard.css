@@ -1,0 +1,135 @@
+html
+{
+  min-width: 100%;
+  min-height: 100%;
+}
+body
+{
+  background-image: linear-gradient(to bottom right, red, black);
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+}
+
+input
+{
+  width: 100%;
+  margin-bottom: 8%;
+}
+
+
+.nav-item
+{
+  padding: 0px 20px;
+  font-weight: bolder;
+  color: white;
+}
+.nav-link
+{
+  color: white !important;
+}
+.active a
+{
+  color: rgb(255, 238, 0) !important;
+}
+.nav-link:hover
+{
+  color: rgb(255, 238, 0) !important;
+}
+.navbar-collapse.in {
+  display: block !important;
+}
+
+
+.flex-container
+{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.form
+{
+  height: 80%;
+  width: 80vh;
+  display: flex;
+  align-content: center;
+}
+
+.main
+{
+  margin: 5% 5%;
+  width: 100%;
+  padding: 1% 5%;
+  background-color: white;
+  color: black;
+  border-radius: 2%;
+  box-shadow: 5px 5px 10px black;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.form-heading
+{
+  margin: 10% 0%;
+  text-align: center;
+  font-size: 30px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.image
+{
+  margin: 0% 0%;
+  height: 95vh;
+}
+
+.schedule-main
+{
+  width: 100%;
+}
+
+.Submit
+{
+  width: 30%;
+  height: 10%;
+  margin: 5% 35%;
+  border-radius: 12px;
+  background-color: rgb(214, 2, 2); 
+  color: white;
+  border-color: rgb(214, 2, 2);
+}
+.Submit:hover
+{
+  background-color: rgb(255, 238, 0);
+  color: black;
+}
+
+.heading
+{
+  margin: 3% 0%;
+  text-align: center;
+  font-size: 50px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+.card
+{
+  width: 60%;
+  margin: 5% 20%;
+  background-color: white;
+  color: black;
+  box-shadow: 5px 5px 10px black;
+}
+.card-body
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

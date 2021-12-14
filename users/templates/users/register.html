@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mission Red </title>
+    <link rel="icon" href="{% static 'Home/Images/logo.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'users/CSS/register.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+  {% if error %}
+  <center>
+  <div class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <p>{{error}}</p>
+  </div>
+  </center>
+  {% endif %}
+
+  <div class="form">
+
+    <img src="{% static 'users/Images/user.png' %}" class="image">
+
+    <div class="main">
+      <h1 class="heading">
+        USER REGISTRATION
+      </h1>
+      <form method="POST" action="{% url 'users:signup' %}" >
+        {% csrf_token %}
+          NAME: <br>
+          <input type="text" name="name" placeholder="NAME" ><br>
+          USERNAME: <br>
+          <input type="text" name="username" placeholder="USERNAME" ><br>
+          EMAIL: <br>
+          <input type="text" size="50" name="email" placeholder="E-MAIL" required><br>
+          CONTACT NUMBER: <br>
+          <input type="text" size="50" name="contact" placeholder="CONTACT NUMBER" required><br>
+          PASSWORD: <br>
+          <input type="password" size="50" name="password1" placeholder="PASSWORD" required><br>
+          RE-TYPE PASSWORD: <br>
+          <input type="password" size="50" name="password2" placeholder="RE-TYPE PASSWORD" required><br>
+          <input type="submit" class=" Submit btn btn-primary"  name="submitDetails" value="Sign Up" >
+      </form>
+    </div>
+
+  </div>
+
+    <div class="container">
+        <p>Already have an account? </p>
+        <a href= "{% url 'users:login' %}"> Log In</a>
+    </div>
+
+</body>
+</html>
