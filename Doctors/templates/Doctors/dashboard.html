@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mission Red </title>
+    <link rel="icon" href="{% static 'Home/Images/logo.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'Doctors/CSS/dashboard.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+  {% if message %}
+    <center>
+    <div class="alert alert-danger alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <p>{{message}}</p>
+    </div>
+    </center>
+  {% endif %}
+    
+  <div class="header">
+    <a href="{% url 'Doctors:logout' %}">Logout</a>
+  </div>
+    
+
+    <div class="flex-container">
+
+      <img src="{% static 'Doctors/Images/schedule.png'%}" class="image">
+
+      <div class="form">
+        <div class="main">
+          <h1 class="form-heading">
+            Appointment Slot
+          </h1>
+          <form method="POST" action="{% url 'Doctors:dashboard' user %}" class="regform">
+            {% csrf_token %}
+              
+              DATE: <br>
+              <input type="date" name="date" required><br>
+              TIME: <br>
+              <input type="time" name="time" required><br>
+              <input type="submit" class=" Submit btn btn-primary" name="submitDetails" value="Add" >
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <h1 class="heading"> SCHEDULED APPOINTMENTS </h1>
+
+    <div class="slot-main">
+      {% for slots in list %}
+      <div class="card">
+          <div class="card-body">
+              <div class="card-title"> {{slots.doctor}} </div>
+              <div class="card-text"><strong>Timing: </strong>{{slots.slot}}</div>
+              <div class="card-text"><strong>Patient: </strong>{{slots.patient}}</div>
+              <div class="card-text"><strong>Patient Contact: </strong>{{slots.patient_contact}}</div>
+              <div class="card-text"><strong>Status: </strong>{{slots.status}}</div>
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    
+</body>
+</html>
